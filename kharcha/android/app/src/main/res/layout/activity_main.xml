@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="serif"
+            android:gravity="center"
+            android:text="Kharcha"
+            android:textColor="@color/ink"
+            android:textSize="34sp" />
+
+        <!-- Step 1: log in -->
+        <LinearLayout
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/card"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log in with your Kharcha account. Your bank SMS will then show up in Kharcha automatically."
+                android:textColor="@color/muted"
+                android:textSize="15sp" />
+
+            <TextView style="@style/Label" android:text="Email" />
+            <EditText
+                android:id="@+id/email"
+                style="@style/Field"
+                android:autofillHints="emailAddress"
+                android:inputType="textEmailAddress" />
+
+            <TextView style="@style/Label" android:text="Password" />
+            <EditText
+                android:id="@+id/password"
+                style="@style/Field"
+                android:autofillHints="password"
+                android:inputType="textPassword" />
+
+            <TextView style="@style/Label" android:text="Server address" />
+            <EditText
+                android:id="@+id/server"
+                style="@style/Field"
+                android:hint="https://your-kharcha.example.com"
+                android:inputType="textUri" />
+
+            <TextView
+                android:id="@+id/loginError"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/clay"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/loginButton"
+                style="@style/PrimaryButton"
+                android:text="Log in" />
+        </LinearLayout>
+
+        <!-- Step 2: allow SMS, then status -->
+        <LinearLayout
+            android:id="@+id/connected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/card"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/ink"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/muted"
+                android:textSize="15sp" />
+
+            <Button
+                android:id="@+id/allowButton"
+                style="@style/PrimaryButton"
+                android:text="Allow SMS access" />
+
+            <Button
+                android:id="@+id/openButton"
+                style="@style/GhostButton"
+                android:text="Open Kharcha" />
+
+            <Button
+                android:id="@+id/logoutButton"
+                style="@style/GhostButton"
+                android:text="Log out" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

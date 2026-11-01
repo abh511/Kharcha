@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f1e8;
+  --color-card: #fffdf8;
+  --color-ink: #1c1b17;
+  --color-muted: #6f6a5e;
+  --color-line: #e4ddcd;
+  --color-leaf: #1f4d3a;
+  --color-leaf-soft: #e3ece4;
+  --color-clay: #b8492a;
+  --color-clay-soft: #f6e2d9;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
+}
+
+html,
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.money {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.card {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 18px;
+}
+
+/* In the components layer so utilities like pl-7 (room for a ₹ prefix) can override the padding. */
+@layer components {
+  .input {
+    width: 100%;
+    border: 1px solid var(--color-line);
+    background: #fff;
+    border-radius: 12px;
+    padding: 0.65rem 0.85rem;
+    outline: none;
+  }
+  .input:focus {
+    border-color: var(--color-leaf);
+    box-shadow: 0 0 0 3px var(--color-leaf-soft);
+  }
+}
+
+.btn {
+  border-radius: 999px;
+  padding: 0.6rem 1.1rem;
+  font-weight: 600;
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.btn:active {
+  transform: scale(0.97);
+}
+.btn-primary {
+  background: var(--color-leaf);
+  color: var(--color-paper);
+}
+.btn-primary:hover {
+  background: #183e2f;
+}
+.btn-ghost {
+  border: 1px solid var(--color-line);
+  background: var(--color-card);
+}
+.btn-ghost:hover {
+  background: #f0eadc;
+}
+.btn:disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- New bank SMS as they arrive -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <!-- The last 90 days of bank SMS, once, right after setup -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+
+    <!-- usesCleartextTraffic: lets you test against a server on your Wi-Fi (http://192.168.x.x:8080).
+         Turn it off once Kharcha is deployed on HTTPS. allowBackup=false keeps the token out of cloud backups. -->
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Kharcha"
+        android:theme="@style/Theme.Kharcha"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- BROADCAST_SMS: only the system can deliver SMS to this receiver. -->
+        <receiver
+            android:name=".SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

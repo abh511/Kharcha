@@ -1,0 +1,27 @@
+# Local full stack:  docker compose up --build   →  http://localhost:8080
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: kharcha
+      POSTGRES_PASSWORD: kharcha
+      POSTGRES_DB: kharcha
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kharcha"]
+      interval: 2s
+      retries: 20
+
+  app:
+    build: .
+    depends_on:
+      db: { condition: service_healthy }
+    environment:
+      DATABASE_URL: postgres://kharcha:kharcha@db:5432/kharcha
+      JWT_SECRET: local-dev-secret-please-change-0123456789abcdef
+      APP_TZ: Asia/Kolkata
+    ports: ["8080:8080"]
+
+volumes:
+  pgdata:

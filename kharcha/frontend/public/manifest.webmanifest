@@ -1,0 +1,12 @@
+{
+  "name": "Kharcha",
+  "short_name": "Kharcha",
+  "description": "See where your money goes, automatically, from your bank SMS.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F1E8",
+  "theme_color": "#F5F1E8",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
